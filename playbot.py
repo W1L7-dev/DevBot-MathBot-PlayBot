@@ -11,6 +11,3 @@ def playbot():
   bot.remove_command("help")
   load_cog(bot=bot, cog="cogs/music")
   bot.run(os.getenv("PLAYBOT"))
-
-if __name__ == "__main__":
-  playbot()

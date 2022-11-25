@@ -11,6 +11,3 @@ def mathbot():
   bot.remove_command("help")
   load_cog(bot=bot, cog="cogs/math")
   bot.run(os.getenv("MATHBOT"))
-
-if __name__ == "__main__":
-  mathbot()

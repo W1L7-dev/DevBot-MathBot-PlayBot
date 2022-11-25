@@ -12,6 +12,3 @@ def devbot():
   load_cog(bot=bot, cog="cogs/cmd")
   load_cog(bot=bot, cog="cogs/events")
   bot.run(os.getenv("DEVBOT"))
-
-if __name__ == "__main__":
-  devbot()
