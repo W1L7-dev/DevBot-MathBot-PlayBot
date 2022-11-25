@@ -66,8 +66,6 @@ Hey! I'm W1L7, the developer of __DevBot__, __PlayBot__ and __MathBot__. Those d
 - `/createfolder <folder>`: Creates a folder, permissions required: `ADMINISTRATOR`
 - `/delfolder <folder>`: Deletes a folder, permissions required: `ADMINISTRATOR`
 - `/clearfolder <folder>`: Clears a folder, permissions required: `ADMINISTRATOR`
-- `/listfolder <folder>`: Lists a folder, permissions required: `ADMINISTRATOR`
-- `/clearcache`: Clears the bot's cache, permissions required: `ADMINISTRATOR`
 
 ### Math (With MathBot)
 - `/add <number> <number>`: Adds two numbers

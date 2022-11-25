@@ -1,7 +1,6 @@
 from nextcord.ext import commands, application_checks
 from tasks.asyncs.Clear import cls
 from tasks.Restart import restart
-from clear_cache import clear as clear_cache
 import nextcord
 import datetime
 import time
@@ -254,16 +253,6 @@ class Dev(commands.Cog):
     except Exception as e:
       embed = nextcord.Embed(title="Exec", description=f"Error: {e}", color=nextcord.Color.blurple())
       await inter.response.send_message(embed=embed)
-
-  @nextcord.slash_command(name="clearcache", description="Clears the cache")
-  @application_checks.has_guild_permissions(administrator=True)
-  async def clearcache(self, inter: nextcord.Interaction):
-    clear_cache(dir="./cogs/cmd")
-    clear_cache(dir="./cogs/events")
-    clear_cache(dir="./tasks")
-    clear_cache(dir="./tasks/asyncs")
-    embed = nextcord.Embed(title="ClearCache", description=f"Cleared the cache", color=nextcord.Color.blurple())
-    await inter.response.send_message(embed=embed)
 
 def setup(bot):
   bot.add_cog(Dev(bot))

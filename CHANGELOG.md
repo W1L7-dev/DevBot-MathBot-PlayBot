@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 11/25/2022: 13h18
+- 💿・Removed clearcache command
+
 ## 11/25/2022: 12h55
 - 📖・Updated README.md by adding the Dev Community Discord server invite link
 
