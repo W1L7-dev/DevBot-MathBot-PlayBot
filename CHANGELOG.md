@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 11/25/2022: 12h55
+- 📖・Updated README.md by adding the Dev Community Discord server invite link
+
 ## 11/25/2022: 12h49
 - 🚨・Un-ignored json folder and queue.json file
 

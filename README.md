@@ -178,3 +178,5 @@ Hey! I'm W1L7, the developer of __DevBot__, __PlayBot__ and __MathBot__. Those d
 - `/add <song>`: Adds a song to the queue
 - `/remove <song>`: Removes a song from the queue
 - `/clear`: Clears the queue
+
+## JOIN The Dev Community Discord Server: https://discord.gg/X3VMD2KjTY
