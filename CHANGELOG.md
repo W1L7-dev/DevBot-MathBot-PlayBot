@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 11/29/2022: 7h13 PM
+- ✨・+ Levelling system
+
 ## 11/12/2022: 1h37 PM
 - 🕗・Updated CHANGELOG.md
 
@@ -28,4 +31,4 @@
 - 🌌・Added runner.py file, to run the bots
 
 ## 11/25/2022: 12h40 AM
-- 📁・ Initial Commit
+- 📁・Initial Commit

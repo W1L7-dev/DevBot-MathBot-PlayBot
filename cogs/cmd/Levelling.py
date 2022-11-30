@@ -50,9 +50,14 @@ class Levelling(commands.Cog):
     user_id = str(inter.user.id)
     username = inter.user.name
     level = users[user_id]['level']
-    experience = users[user_id]['experience']
+    # check for the user's rank. compares all the users in the json file and checks if the user's level is higher than the other users
+    rank = 1
+    for user in users:
+      if users[user]['level'] > level:
+        rank += 1
 
     embed = nextcord.Embed(title=f"{username}'s Rank", description=f"{username} is level {level}", color=nextcord.Color.blue())
+    embed.add_field(name="Rank", value=rank)
     embed.set_thumbnail(url=inter.user.avatar.url)
     await inter.response.send_message(embed=embed)
 
@@ -60,18 +65,43 @@ class Levelling(commands.Cog):
   async def leaderboard(self, inter: nextcord.Interaction):
     with open('cogs/cmd/json/levels.json', 'r') as f:
       users = json.load(f)
-    leaderboard = []
+
+    leader_board = {}
+    total_level = 0
+
     for user in users:
       name = int(user)
-      level = users[user]['level']
-      leaderboard.append([name, level])
-    embed = nextcord.Embed(title="Leaderboard", description="The leaderboard", color=nextcord.Color.blue())
-    i = 1
-    for x in range(len(leaderboard)):
-      name, level = leaderboard[x]
-      embed.add_field(name=f"{i}. {self.bot.get_user(name)}", value=f"Level: {level}", inline=False)
-      i += 1
+      total_level = users[user]['level']
+      leader_board[total_level] = name
+
+    embed = nextcord.Embed(title="Leaderboard", description="Our top 10 users", color=nextcord.Color.blue())
+    index = 1
+    for lvl in sorted(leader_board, reverse=True):
+      id_ = leader_board[lvl]
+      member = self.bot.get_user(id_)
+      name = member.name
+      embed.add_field(name=f"{index}. {name}", value=f"Level: {lvl}", inline=False)
+      if index == 10:
+        break
+      else:
+        index += 1
     await inter.response.send_message(embed=embed)
+
+  @nextcord.slash_command(name='reset', description='Resets your rank')
+  async def reset(self, inter: nextcord.Interaction):
+    with open('cogs/cmd/json/levels.json', 'r') as f:
+      users = json.load(f)
+
+    await self.update_data(users, inter.user)
+
+    user_id = str(inter.user.id)
+    users[user_id]['level'] = 1
+    users[user_id]['experience'] = 0
+
+    with open('cogs/cmd/json/levels.json', 'w') as f:
+      json.dump(users, f)
+
+    await inter.response.send_message('Your rank has been reset')
 
 def setup(bot):
   bot.add_cog(Levelling(bot))
